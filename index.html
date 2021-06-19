@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>CRUD</title>
+</head>
+
+<body>
+
+    <div>
+        <div class="container my-5">
+            <div class="form-group mt-3 mb-1">
+                <label for="prodName">Product Name:</label>
+                <input type="text" class="form-control" id="prodName">
+            </div>
+            <div class="alert alert-danger error-msg mb-3 font-weight-bold" id="prodNameError">asdasd</div>
+
+            <div class="form-group mt-3 mb-1">
+                <label for="prodPrice">Product Price:</label>
+                <input type="text" class="form-control" id="prodPrice">
+            </div>
+            <div class="alert alert-danger error-msg mb-3 font-weight-bold" id="prodPriceError"></div>
+
+            <div class="form-group mt-3 mb-1">
+                <label for="prodCategory">Product Category:</label>
+                <input type="text" class="form-control" id="prodCategory">
+            </div>
+            <div class="alert alert-danger error-msg mb-3 font-weight-bold" id="prodCategoryError"></div>
+
+            <div class="form-group mt-3 mb-1">
+                <label for="prodDesc">Product Description:</label>
+                <textarea id="prodDesc" class="form-control" rows="3"></textarea>
+            </div>
+            <div class="alert alert-danger error-msg mb-3 font-weight-bold" id="prodDescError"></div>
+
+            <button class="btn btn-outline-info mt-3" id="addBTN" data-toggle="modal">Add
+                Product</button>
+
+            <div class="form-group w-75 mx-auto pt-5 pb-3">
+                <input type="text" class="form-control" placeholder="Search by Product Name" id="searchInput">
+            </div>
+        </div>
+        <div class="container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Product Name</th>
+                        <th>Product Price</th>
+                        <th>Product Category</th>
+                        <th>Product Description</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                </tbody>
+            </table>
+        </div>
+
+
+        <!-- Add Product Modal -->
+        <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add Product</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h5 class="text-success text-center font-weight-bold">Product has been added successfully</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Delete Product Modal -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Delete Product</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h5 class="font-weight-bold text-danger">Are you sure you want to delete this product ?</h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" id="deleteBTN">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Update Product Modal -->
+        <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Update Product</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group mt-3 mb-1">
+                            <label for="prodName">Product Name:</label>
+                            <input type="text" class="form-control" id="uProdName">
+                        </div>
+                        <div class="alert alert-danger error-msg mb-3 font-weight-bold" id="uProdNameError"></div>
+
+                        <div class="form-group mt-3 mb-1">
+                            <label for="prodPrice">Product Price:</label>
+                            <input type="text" class="form-control" id="uProdPrice">
+                        </div>
+                        <div class="alert alert-danger error-msg mb-3 font-weight-bold" id="uProdPriceError"></div>
+
+                        <div class="form-group mt-3 mb-1">
+                            <label for="prodCategory">Product Category:</label>
+                            <input type="text" class="form-control" id="uProdCategory">
+                        </div>
+                        <div class="alert alert-danger error-msg mb-3 font-weight-bold" id="uProdCategoryError"></div>
+
+                        <div class="form-group mt-3 mb-1">
+                            <label for="prodDesc">Product Description:</label>
+                            <textarea id="uProdDesc" class="form-control" rows="3"></textarea>
+                        </div>
+                        <div class="alert alert-danger error-msg mb-3 font-weight-bold" id="uProdDescError"></div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-warning" id="updateBTN">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="js/jquery-3.5.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
