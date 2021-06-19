@@ -20,9 +20,15 @@ let updateBTN = document.getElementById('updateBTN')
 let searchInput = document.getElementById('searchInput')
 // Product Index
 let productIndex = -1
+let tableBody = document.getElementById('tableBody')
 
 if (JSON.parse(localStorage.getItem('allProducts')) == null) {
   productsContainer = []
+
+  tableBody.innerHTML = `
+    <tr>
+      <td colspan='7'> <h3 class="text-center font-weight-bold text-danger py-5">There are no products!</h3> </td>
+    </tr>`
 } else {
   productsContainer = JSON.parse(localStorage.getItem('allProducts'))
   displayProducts(productsContainer)
@@ -74,7 +80,6 @@ function clearInputs() {
 
 // Display Products
 function displayProducts(productsContainer) {
-  let tableBody = document.getElementById('tableBody')
   tableBody.innerHTML = ''
   if (productsContainer.length > 0) {
     for (let i = 0; i < productsContainer.length; i++) {
@@ -93,12 +98,12 @@ function displayProducts(productsContainer) {
     `
     }
   } 
-  // else {
-  //   tableData.innerHTML = `
-  //   <tr>
-  //     <td colspan='7'> <h3 class="text-center font-weight-bold text-danger py-5">There are no products!</h3> </td>
-  //   </tr>`
-  // }
+  else {
+    tableBody.innerHTML = `
+    <tr>
+      <td colspan='7'> <h3 class="text-center font-weight-bold text-danger py-5">There are no products!</h3> </td>
+    </tr>`
+  }
 }
 
 // Product Index
