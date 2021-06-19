@@ -74,7 +74,7 @@ function clearInputs() {
 
 // Display Products
 function displayProducts(productsContainer) {
-  let tableBody = document.getElementById('table-body')
+  let tableBody = document.getElementById('tableBody')
   tableBody.innerHTML = ''
   if (productsContainer.length > 0) {
     for (let i = 0; i < productsContainer.length; i++) {
@@ -92,12 +92,13 @@ function displayProducts(productsContainer) {
         </tr>
     `
     }
-  } else {
-    tableBody.innerHTML = `
-    <tr>
-      <td colspan='7'> <h3 class="text-center font-weight-bold text-danger py-5">There are no products!</h3> </td>
-    </tr>`
-  }
+  } 
+  // else {
+  //   tableData.innerHTML = `
+  //   <tr>
+  //     <td colspan='7'> <h3 class="text-center font-weight-bold text-danger py-5">There are no products!</h3> </td>
+  //   </tr>`
+  // }
 }
 
 // Product Index
